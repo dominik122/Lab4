@@ -57,7 +57,7 @@ public class TestRegEx {
             System.out.println("Nie znaleziono wysokosci infografiki...");
         }
 
-        pat = Pattern.compile("url=\\\"(.*)\\\"\\/>");
+        pat = Pattern.compile("url=\\\"(.*)\\\" \\/>");
         match = pat.matcher(exItem);
         if(match.find()){
             System.out.println("Znaleziono adres miniaturki infografiki: " + match.group(1));
