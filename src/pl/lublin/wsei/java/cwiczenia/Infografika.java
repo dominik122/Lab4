@@ -57,9 +57,16 @@ public class Infografika {
         match = pat.matcher(tekst);
         if(match.find()){
             adresMiniaturki = match.group(1);
-        } else{
+        } else {
             adresMiniaturki = "";
         }
-
+    }
+    public void print(){
+        System.out.println("tytul: " + tytul);
+        System.out.println("adres strony: " + adresStrony);
+        System.out.println("adres grafiki: " + adresGrafiki);
+        System.out.println("adres miniaturki: " + adresMiniaturki);
+        System.out.println("wymiary: " + szerokosc + "X" + wysokosc);
+        System.out.println();
     }
 }
