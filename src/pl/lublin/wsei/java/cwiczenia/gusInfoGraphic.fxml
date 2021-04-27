@@ -1,8 +1,13 @@
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<GridPane fx:controller="pl.lublin.wsei.java.cwiczenia.Controller"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
-</GridPane>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="699.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.lublin.wsei.java.cwiczenia.Controller">
+   <children>
+      <Button layoutX="75.0" layoutY="53.0" mnemonicParsing="false" onAction="#btnOpenFileAction" prefHeight="28.0" prefWidth="98.0" text="Otwórz plik" textFill="#eb0808" />
+      <Label fx:id="lbFile" layoutX="231.0" layoutY="59.0" prefHeight="17.0" prefWidth="511.0" style="-fx-font-style: italic;" text="Proszę wczytać plik..." />
+   </children>
+</AnchorPane>
