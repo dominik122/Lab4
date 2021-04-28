@@ -6,6 +6,9 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.fxml.FXML;
@@ -17,6 +20,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.IOException;
 
 public class Controller {
     public Label lbFile;
@@ -32,7 +36,7 @@ public class Controller {
     public Button btnPokazInfografike;
     public TextField txtAdresStrony;
 
-    private Infografika setInfografika;
+    private Infografika selInfografika;
 
     private Stage stage;
     private HostServices hostServices;
@@ -54,14 +58,14 @@ public class Controller {
                     public void changed(ObservableValue<? extends Number> observableValue, Number old_val, Number new_val){
                         int index = new_val.intValue();
                         if(index != -1){
-                            setInfografika = igList.infografiki.get(index);
-                            txtAdresStrony.setText(setInfografika.adresStrony);
-                            Image image = new Image(setInfografika.adresMiniaturki);
+                            selInfografika = igList.infografiki.get(index);
+                            txtAdresStrony.setText(selInfografika.adresStrony);
+                            Image image = new Image(selInfografika.adresMiniaturki);
                             imgMiniaturka.setImage(image);
                         } else {
                             txtAdresStrony.setText("");
                             imgMiniaturka.setImage(null);
-                            setInfografika = null;
+                            selInfografika = null;
                         }
                     }
                 }
@@ -82,8 +86,29 @@ public class Controller {
     }
 
     public void btnZaladujStrone(ActionEvent actionEvent) {
-        if (setInfografika != null){
-            hostServices.showDocument(setInfografika.adresStrony);
+        if (selInfografika != null){
+            hostServices.showDocument(selInfografika.adresStrony);
+        }
+    }
+
+    public void btnPokazOnAction(ActionEvent actionEvent) {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("imgViewer.fxml"));
+            Parent root = loader.load();
+            ImgViewer viewer = loader.getController();
+            if (selInfografika != null){
+                Image img = new Image(selInfografika.adresGrafiki);
+                viewer.imgView.setFitWidth(img.getWidth());
+                viewer.imgView.setFitHeight(img.getHeight());
+                viewer.imgView.setImage(img);
+            }
+
+            Stage stage = new Stage();
+            stage.setTitle("Podgląd infografiki");
+            stage.setScene(new Scene(root, 900, 800));
+            stage.show();
+        } catch(IOException e){
+            e.printStackTrace();
         }
     }
 }

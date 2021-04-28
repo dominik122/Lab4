@@ -7,7 +7,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="699.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.lublin.wsei.java.cwiczenia.Controller">
    <children>
       <Button layoutX="75.0" layoutY="53.0" mnemonicParsing="false" onAction="#btnOpenFileAction" prefHeight="28.0" prefWidth="98.0" text="Otwórz plik" textFill="#eb0808" />
@@ -17,7 +16,7 @@
       <Button fx:id="btnPrzejdzDoStrony" layoutX="686.0" layoutY="616.0" mnemonicParsing="false" onAction="#btnZaladujStrone" text="Załaduj" />
       <ImageView fx:id="imgMiniaturka" fitHeight="259.0" fitWidth="314.0" layoutX="446.0" layoutY="221.0" pickOnBounds="true" preserveRatio="true" />
       <Label layoutX="446.0" layoutY="204.0" text="Miniaturka:" />
-      <Button fx:id="btnPokazInfografike" layoutX="708.0" layoutY="491.0" mnemonicParsing="false" text="Pokaż" />
+      <Button fx:id="btnPokazInfografike" layoutX="708.0" layoutY="491.0" mnemonicParsing="false" onAction="#btnPokazOnAction" text="Pokaż" />
       <TextField fx:id="txtAdresStrony" editable="false" layoutX="34.0" layoutY="616.0" prefHeight="25.0" prefWidth="616.0" />
    </children>
 </AnchorPane>
